@@ -1,4 +1,4 @@
-require('dotenv').congig(); //Calling the environment variables
+require('dotenv').config(); //Calling the environment variables
 
 const express = require('express'); //Calling the express fnction from node_modules
 const app = express();
