@@ -3,13 +3,10 @@ require('dotenv').config(); //Calling the environment variables
 const express = require('express'); //Calling the express fnction from node_modules
 const app = express();
 const PORT = process.env.PORT;
-const products = require('./data/products');
-
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
-});
+const productRouter = require('./data/products');
 
 app.use(express.json()); //In-built express middleware for json parsing
+app.use('/',productRouter); //Using the router file as middleware
 
 // Root route (homepage) of the API
 app.get('/', (req, res) => {
@@ -33,3 +30,7 @@ app.get('/products', (req, res) => {
     data: products
   });
  });
+
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`)
+});
