@@ -1,13 +1,11 @@
 require('dotenv').config(); //Calling the environment variables
+const PORT = process.env.PORT || 3000;
 
-const express = require('express'); //Calling the express fnction from node_modules
+const express = require('express'); //Calling the express function from node_modules
 const app = express();
-const PORT = process.env.PORT;
 const products = require('./data/products');
 
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
-});
+
 
 app.use(express.json()); //In-built express middleware for json parsing
 
@@ -27,9 +25,34 @@ app.get('/products', (req, res) => {
       data: []
     });
   }
+
+  // Route to add a new products
+
+
   // If products exist, send them back with a 200 (OK) status
   res.status(200).json({
     message: 'Products retrieved successfully',
     data: products
   });
- });
+
+
+});
+app.post('/products', (req, res) => {
+  const { id, name, price, InStock } = req.body;
+
+  //Validation
+  if (!id || !name || !price || !InStock) {
+    return res.status(400).json({ message: 'All fields (id, name, price, InStock) are required ' });
+  }
+
+  //Add to the product listen
+  products.push({ id, name, price, InStock });
+
+  res.status(201).json({
+    message: 'Product added successfully',
+    data: { id, name, price, InStock }
+  });
+});
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`)
+});
