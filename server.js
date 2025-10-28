@@ -27,6 +27,7 @@ app.get('/products', (req, res) => {
       data: []
     });
   }
+  
   // If products exist, send them back with a 200 (OK) status
   res.status(200).json({
     message: 'Products retrieved successfully',
