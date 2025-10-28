@@ -5,8 +5,6 @@ const express = require('express'); //Calling the express function from node_mod
 const app = express();
 const products = require('./data/products');
 
-
-
 app.use(express.json()); //In-built express middleware for json parsing
 
 // Root route (homepage) of the API
@@ -26,16 +24,11 @@ app.get('/products', (req, res) => {
     });
   }
 
-  // Route to add a new products
-
-
   // If products exist, send them back with a 200 (OK) status
   res.status(200).json({
     message: 'Products retrieved successfully',
     data: products
   });
-
-
 });
 app.post('/products', (req, res) => {
   const { id, name, price, InStock } = req.body;

@@ -98,7 +98,7 @@ let products = [
     id: 15,
     name: "Motorola Razr 40",
     price: 900,
-    InStock: 5
+    InStock: 6
   }
 ];
 
