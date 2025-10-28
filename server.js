@@ -30,6 +30,8 @@ app.get('/products', (req, res) => {
     data: products
   });
 });
+
+// Route to add new products
 app.post('/products', (req, res) => {
   const { id, name, price, InStock } = req.body;
 
@@ -38,7 +40,7 @@ app.post('/products', (req, res) => {
     return res.status(400).json({ message: 'All fields (id, name, price, InStock) are required ' });
   }
 
-  //Add to the product listen
+  //Add to the product list
   products.push({ id, name, price, InStock });
 
   res.status(201).json({
