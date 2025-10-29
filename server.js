@@ -3,11 +3,13 @@ const PORT = process.env.PORT || 3000;
 
 const express = require('express'); //Calling the express function from node_modules
 const app = express();
-const { getProducts } = require('./data/Inventorycallfunction');// Import the getProducts function
-const { addProduct } = require('./data/AddProdfunction');// Import the addProduct function
-const { patchProduct } = require('./data/patchproductfunction');// Import the patchProduct function
-const { deleteProduct } = require('./data/Deletefunction');// Import the deleteProduct function
-const { getProduct } = require('./data/productcallfunction');// Import the getProduct function
+const { 
+  getProducts,
+  addProduct,
+  patchProduct,
+  deleteProduct,
+  getProduct
+} = require('./data/Routes_handlers');// 
 
 app.use(express.json()); //In-built express middleware for json parsing
 
