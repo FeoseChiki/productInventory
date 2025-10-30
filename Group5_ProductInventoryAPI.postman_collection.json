@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "41315e43-68a2-4eaf-ab67-7bdc0b961d79",
+		"name": "Group 5 Product Inventory API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49479583",
+		"_collection_link": "https://yakubyussuff2-8994764.postman.co/workspace/Yakub-Momohjimoh-Yussuff's-Work~2dd6d3af-1d34-48b5-8a19-9815d9d41fa3/collection/49479583-41315e43-68a2-4eaf-ab67-7bdc0b961d79?action=share&source=collection_link&creator=49479583"
+	},
+	"item": [
+		{
+			"name": "GET ALL PRODUCT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "939"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3ab-HFfvYrnkK5rNF9wbDflR3/vByHk\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Oct 2025 14:38:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Products retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Samsung S22 Ultra\",\n            \"price\": 600,\n            \"InStock\": 10\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Samsung Galaxy A54\",\n            \"price\": 400,\n            \"InStock\": 15\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Samsung Z Flip 5\",\n            \"price\": 900,\n            \"InStock\": 5\n        },\n        {\n            \"id\": 4,\n            \"name\": \"iPhone 14 Pro\",\n            \"price\": 1200,\n            \"InStock\": 8\n        },\n        {\n            \"id\": 5,\n            \"name\": \"iPhone 13\",\n            \"price\": 950,\n            \"InStock\": 10\n        },\n        {\n            \"id\": 6,\n            \"name\": \"iPhone SE (2022)\",\n            \"price\": 500,\n            \"InStock\": 12\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Google Pixel 7 Pro\",\n            \"price\": 850,\n            \"InStock\": 9\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Google Pixel 6a\",\n            \"price\": 450,\n            \"InStock\": 14\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Google Pixel Fold\",\n            \"price\": 1300,\n            \"InStock\": 4\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Huawei P60 Pro\",\n            \"price\": 700,\n            \"InStock\": 7\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Huawei Mate 50\",\n            \"price\": 800,\n            \"InStock\": 6\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Huawei Nova 11\",\n            \"price\": 550,\n            \"InStock\": 10\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Motorola Edge 40\",\n            \"price\": 600,\n            \"InStock\": 8\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Motorola G73\",\n            \"price\": 350,\n            \"InStock\": 15\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Motorola Razr 40\",\n            \"price\": 900,\n            \"InStock\": 6\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "GET PRODUCT BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Assert status code is 201 and response schema fields",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.expect(pm.response.code).to.equal(201);",
+							"});",
+							"",
+							"let json;",
+							"pm.test(\"Response is valid JSON\", function () {",
+							"    json = pm.response.json();",
+							"    pm.expect(json).to.be.an(\"object\");",
+							"});",
+							"",
+							"pm.test(\"Response has required fields with valid types\", function () {",
+							"    pm.expect(json).to.have.property(\"id\");",
+							"    pm.expect(json.id).to.satisfy(v => typeof v === \"string\" || typeof v === \"number\");",
+							"",
+							"    pm.expect(json).to.have.property(\"name\").that.is.a(\"string\");",
+							"    pm.expect(json).to.have.property(\"price\").that.is.a(\"number\");",
+							"    pm.expect(json).to.have.property(\"inStock\").that.is.a(\"number\");",
+							"    pm.expect(json.inStock).to.be.at.least(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\"name\":\"Wireless Mouse\",\r\n\"description\":\"Ergonomic design\",\r\n\"price\":2500,\r\n\"inStock\": 20\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"price\": 650,\r\n    \"InStock\": 20\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/:id =2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						":id =2"
+					],
+					"variable": [
+						{
+							"key": "id =2",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"price\": 3000,\r\n    \"quantity\": 15\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
