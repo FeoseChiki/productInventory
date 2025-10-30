@@ -9,7 +9,7 @@ const {
   patchProduct,
   deleteProduct,
   getProduct
-} = require('./data/Routes_handlers');// 
+} = require('./Controllers/Routes_handlers');// 
 
 app.use(express.json()); //In-built express middleware for json parsing
 
@@ -36,4 +36,12 @@ app.get('/products/:id', getProduct);// assign GET route to the imported functio
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`)
+});
+
+app.use((err, req, res, next) => {
+    res.status(500).json({error: 'Server error!'});
+});
+
+app.use((req, res,) => {
+  res.status(404).json({message: "Invalid route"});
 });
