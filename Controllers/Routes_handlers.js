@@ -25,7 +25,7 @@ function addProduct(req, res){
   if (products.length > 0)
     {nextid = Math.max(...products.map(p => p.id)) + 1;
     } else {
-      nextid = products.lenght + 1;
+      nextid = products.length + 1;
     }
   const { name } = body;
   let { price, InStock } = body;
